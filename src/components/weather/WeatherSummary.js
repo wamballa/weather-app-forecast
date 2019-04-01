@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Form from './Form';
 import WeatherCurrentCard from './WeatherCurrentCard'
 import CitySummary from './CitySummary'
+import { Formik, Field } from 'formik';
 
 const API_KEY = 'e22d1c07fa47b19cb8d862add6c876d5';
 
@@ -26,14 +27,12 @@ export class WeatherSummary extends Component {
     error: undefined
   };
 
-
-
   getWeather = async (e) => {
     // console.log ("getWeather data before " , this.state);
-    console.log("GET WEATHER ",e);
+    console.log("GET WEATHER ",e.target.name);
     e.preventDefault();
     
-    const city = 'luton'; //e.target.elements.city.value;
+    const city = e.target.name;
     
     // const country = e.target.elements.country.value;
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&sort=population&appid=${API_KEY}&units=metric`);
@@ -136,9 +135,10 @@ export class WeatherSummary extends Component {
   render() {
     return (
       <div>
+
+
         <form>
-        
-        <input type="button" name="Luton" value="Click me" onClick={this.getWeather}></input>
+            <input type="button" name="Paris" value="Click me" onClick={this.getWeather}></input>
         </form>
 
         {/* <Form getWeather={this.getWeather} /> */}
