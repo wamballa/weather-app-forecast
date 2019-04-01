@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Form from './Form';
 import WeatherCurrentCard from './WeatherCurrentCard'
 import CitySummary from './CitySummary'
-import { Formik, Field } from 'formik';
+// import { Formik, Field } from 'formik';
 
 const API_KEY = 'e22d1c07fa47b19cb8d862add6c876d5';
 
@@ -89,30 +89,24 @@ export class WeatherSummary extends Component {
       var pressure = data.list[i].main.pressure;
       var cloud = data.list[i].clouds.all;
 
-      var row = '<tr><td><img src="' + img + '"></td><td><b><li onClick={this.showSearchData} data-id= "'+ i + '"><span>' + data.list[i].id + '</span></li></td></tr>'; 
+      // var row = '<tr><td><img src="' + img + '"></td><td><b><li onClick={this.showSearchData} name= "'+ i + '"><span>' + data.list[i].id + '</span></li></td></tr>'; 
       
+      var row = '<div><input type="button" className="link-button" name="Paris" value="Paris" onClick="{this.getWeather}"></input></div>'; 
       
       
       {/* <a href="https://openweathermap.org/city/' + data.list[i].id + '"> ' + name + '</a></b> <img class="flag" src="' + flag + '" ><b><i> ' + text + '</i></b><p><span class="badge badge-info">' + temp + '°С </span> wind ' + gust+ ' m/s. </p></td></tr>'; */}
 
       // var row = '<tr><td><img src="' + img + '"></td><td><b><a href="/city/' + data.list[i].id + '"> ' + name + '</a></b> <img class="flag" src="' + flag + '" ><b><i> ' + text + '</i></b><p><span class="badge badge-info">' + temp + '°С </span> wind ' + gust+ ' m/s. </p></td></tr>';
 
-
-
       html = html + row;
     }
     // html='<table class="table">' + html + '</table>';
-    html='<ul>' + html + '</ul';
-
-
-
+    // html='<ul>' + html + '</ul';
     // html='<form onSubmit=this.getWeather()></form>'
     console.log("HTML = "+html);
     // return html;
     document.getElementById('search_output').innerHTML = html;
-
   }
-
   findCity = async (e) => {
 
     e.preventDefault();
@@ -123,23 +117,19 @@ export class WeatherSummary extends Component {
     // console.log('API CALL ', api_call);
     const data = await api_call.json();
     // console log all API call data
-    console.log("search results ", data);
+    // console.log("search results ", data);
     // this.cityList = data;
 
     // console.log("cityList", this.cityList);
     this.showSearchData(data);
   };
-
-
-
   render() {
     return (
       <div>
 
-
-        <form>
-            <input type="button" name="Paris" value="Click me" onClick={this.getWeather}></input>
-        </form>
+        <div><input type="button" className="link-button" name="Paris" value="Paris..." onClick=this.getWeather></input></div>
+        <div><input type="button" className="link-button" name="Northampton" value="Northampton" onClick={this.getWeather}></input></div>
+        <div><input type="button" className="link-button" name="Luton" value="Luton" onClick={this.getWeather}></input></div> 
 
         {/* <Form getWeather={this.getWeather} /> */}
         <Form findCity={this.findCity} />
