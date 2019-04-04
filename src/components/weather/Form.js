@@ -2,7 +2,8 @@ import React from 'react'
 
 export default function Form(props) {
   // const props_ = {props};
-  console.log("propose are ",props);
+
+  // console.log("propose are ",props);
   return (
     <div className="m-2">
       {/* <form className="p-3 input-group mb-3" onSubmit={props.getWeather}> */}

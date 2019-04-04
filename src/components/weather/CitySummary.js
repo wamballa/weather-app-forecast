@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default function CitySummary(props) {
+export class CitySummary extends Component {
 
-  console.log("city summary ",props);
+  onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+  handleFormSubmit() {
+    console.log("Form submitted");
+  }
 
-  return (
-    <div>
-      City List
-    </div>
-  )
+  render() {
+    let cityList = this.props.cityList.list || []; // if no items give an empty array
+
+    console.log("CitySummary citylist...", cityList);
+
+    return (
+      <div>
+        <form  onSubmit={this.handleFormSubmit}>
+
+          {cityList.map((city) => (
+            // how can i make these clickable?
+            <div key={city.id}> {city.name} {city.sys.country} Coords: {city.coord.lat}, {city.coord.lon}</div>
+          ))}
+
+        </form>
+      </div>
+    )
+  }
 }
+
+export default CitySummary
