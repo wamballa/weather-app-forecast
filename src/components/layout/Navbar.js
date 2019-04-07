@@ -14,7 +14,7 @@ export class Navbar extends Component {
   render() {
 
     const show = (this.state.menu) ? "show" : "" ;
-    console.log ("show = "+show);
+    // console.log ("show = "+show);
 
     return (
 

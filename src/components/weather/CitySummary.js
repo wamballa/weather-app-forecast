@@ -65,7 +65,7 @@ export class CitySummary extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted " + e.target.name);
+    // console.log("Form submitted " + e.target.name);
     const city = e.target.name;
     // this.props.addCity(city);
     this.getWeather(city);
@@ -77,11 +77,11 @@ export class CitySummary extends Component {
   }
   // <div key={city.id}> {city.name} {city.sys.country} Coords: {city.coord.lat}, {city.coord.lon}</div>
   render() {
-    console.log("city summary props ", this.props);
+    // console.log("city summary props ", this.props);
     let cityList = this.props.cities.list || []; // if no items give an empty array
     // let cityList = this.props.list; // if no items give an empty array
     // console.log("CitySummary citylist...", cityList);
-    console.log("City summary cityList = ", cityList)
+    // console.log("City summary cityList = ", cityList)
 
     return (
       <div>
