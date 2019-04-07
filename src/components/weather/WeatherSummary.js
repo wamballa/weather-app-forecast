@@ -64,7 +64,7 @@ export class WeatherSummary extends Component {
         {/* <Form1 findCity = {this.findCity} /> */}
         {/* <Form findCity cityList = {this.state.cityList} /> */}
 
-        <CitySummary cityList={this.state.cityList} />
+        <CitySummary cityList={this.state.cityList} city={this.state.city} />
         <div id='search_output'></div>
         <WeatherCurrentCard
           city={this.state.city}
