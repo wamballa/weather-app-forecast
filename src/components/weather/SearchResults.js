@@ -18,13 +18,14 @@ export class SearchResults extends Component {
 
 
   getWeather = async (city) => {
-    console.log("City Summary GET WEATHER " + city);
+    // console.log("SearchResults  " + city);
     const API_KEY = 'e22d1c07fa47b19cb8d862add6c876d5';
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&sort=population&appid=${API_KEY}&units=metric`);
     const data = await api_call.json();
     if (data.name && data.sys.country) {
       this.setState({
         city: data.name,
+        id: data.id,
         country: data.sys.country,
         mainDescription: data.weather[0].main,
         description: data.weather[0].description,
@@ -39,6 +40,7 @@ export class SearchResults extends Component {
     } else {
       this.setState({
         city: undefined,
+        id: undefined,
         country: undefined,
         mainDescription: undefined,
         description: undefined,
@@ -53,7 +55,7 @@ export class SearchResults extends Component {
     }
     // console log all API call data
     // console.log("getWeather data raw ", data);
-    // console.log("city summary state ",this.state);
+    console.log("SearchResults state ",this.state);
     // cityList = [];
     // this.props.cities = [];
 

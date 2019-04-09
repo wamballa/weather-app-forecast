@@ -3,8 +3,8 @@ import './weather.css'
 
 export default function WeatherCurrentCard(props) {
 
-  function handleClick(){
-    console.log("wwather button click");
+  function handleClick (e) {
+    console.log("wwather button click id = "+e.target.id);
   }
 
   console.log ('weathercard = ', props);
@@ -40,7 +40,8 @@ export default function WeatherCurrentCard(props) {
               {/* <div>&nbsp;</div> */}
               <div className="title">{props.city.mainDescription}</div>
               <div className="sub">{props.city.description}</div>
-              <button onClick={props.delCard}>Delete</button>
+              <div>{props.city.id}</div>
+              <input type="button" value="Delete" id={props.city.id} onClick={props.delCard}></input>
             </div>
           </div>
 

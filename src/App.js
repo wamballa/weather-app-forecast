@@ -33,8 +33,14 @@ class App extends Component {
   }
 
   delCard = (id) => {
-    console.log("deleCard()");
+    console.log("deleCard() state " + this.state.cards[0].id);
 
+    this.setState({
+      // cards: this.state.cards.filter((_, i) => i !== id)
+      cards: [...this.state.cards.filter(
+        card => card.id !== id
+      )]
+    });
     // this.setState ({
     //   todos: [...this.state.todos.filter(
     //     todo => todo.id!==id
@@ -44,23 +50,23 @@ class App extends Component {
     //     todos:
     //       [...this.state.todos.filter(todo => todo.id !== id)]
     //   }));
-  
-}
 
-render() {
-  console.log("app state = ", this.state.show);
-  return (
-    <div className="App">
-      <Navbar />
-      <React.Fragment>
-        <AddCard addCard={this.addCard} showCards={this.showCards} />
-        {this.state.show && <ShowCards state={this.state} delCard={this.delCard} />}
+  }
 
-      </React.Fragment>
+  render() {
+    console.log("app state = ", this.state);
+    return (
+      <div className="App">
+        <Navbar />
+        <React.Fragment>
+          <AddCard addCard={this.addCard} showCards={this.showCards} />
+          {this.state.show && <ShowCards state={this.state} delCard={this.delCard} />}
 
-    </div>
-  );
-}
+        </React.Fragment>
+
+      </div>
+    );
+  }
 }
 
 export default App;
