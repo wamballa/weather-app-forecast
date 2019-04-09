@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import WeatherCard from './WeatherCurrentCard'
 
 export class ShowCards extends Component {
 
@@ -6,15 +7,29 @@ export class ShowCards extends Component {
 
   render() {
 
-    console.log('showcards prop ',this.props.cards);
-    const cardList = this.props.cards;
-    console.log('showcards icon ',cardList[0].icon);
-    const icon_url = 'http://openweathermap.org/img/w/' + this.props.cards.icon + '.png';
-    console.log('Showcard props '+icon_url);
+    // console.log('showcards prop ',this.props.cards);
+    // console.log('showcards prop.... ',this.props.cards[0]);
+    let cardList = this.props.cards.cards;
+    console.log('showcards prop ',cardList);
+    // console.log('cardList '+cardList.length);
+    // if (cardList.length == 0){
+    //   console.log ("Card list empty",this.props.cards)
+    // } else {
+    //   console.log('card list not empty.... ',this.props.cards);
+
+    // }
+    // console.log('showcards prop.... ',this.props.cards[0]);
+    // console.log('showcards icon ',cardList[0].icon);
+    // const icon_url = 'http://openweathermap.org/img/w/' + this.props.cards.icon + '.png';
+    // console.log('Showcard props '+icon_url);
 
     return (
       <div>
-        <h1>showcards</h1>
+        {cardList.map((city) => (
+          <WeatherCard key={Math.random()} city={city}/>
+        ))}
+
+
       </div>
     )
   }

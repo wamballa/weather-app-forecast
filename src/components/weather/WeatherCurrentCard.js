@@ -3,14 +3,16 @@ import './weather.css'
 
 export default function WeatherCurrentCard(props) {
 
-  const icon_url = 'http://openweathermap.org/img/w/' + props.icon + '.png';
+  console.log ('weathercard = ', props);
+  console.log ('weathercard icon= ', props.city.icon);
+  const icon_url = 'http://openweathermap.org/img/w/' + props.city.icon + '.png';
 
   return (
 
     <div className="container-fluid">
-      {props.error && <h1 className='error'>{props.error}</h1>}
+      {props.city.error && <h1 className='error'>{props.city.error}</h1>}
       {
-        props.city &&
+        props.city.city &&
 
         <div className="row weather bg-dark text-white shadow m-2 p-4 mb-4 ">
 
@@ -19,9 +21,9 @@ export default function WeatherCurrentCard(props) {
             {/* <div className="current"> */}
             <div className="info">
               <div>&nbsp;</div>
-              <div className="city"><small><small>CITY: </small></small>{props.city}</div>
-              <div className="temp">{Math.round(props.temp)}&deg;<small>C</small></div>
-              <div className="wind"><small><small>WIND: </small></small>{Math.round(props.windSpeed)} mph</div>
+              <div className="city"><small><small>CITY: </small></small>{props.city.city}</div>
+              <div className="temp">{Math.round(props.city.temp)}&deg;<small>C</small></div>
+              <div className="wind"><small><small>WIND: </small></small>{Math.round(props.city.windSpeed)} mph</div>
               <div>&nbsp;</div>
             </div>
           </div>
@@ -29,10 +31,10 @@ export default function WeatherCurrentCard(props) {
           <div className="col-sm-6 col-md-6 col-lg-6" >
             <div className="icon iconImage">
               {/* <div>&nbsp;</div> */}
-              {props.icon && <img className='graphic' src={icon_url} alt='' />}
+              {props.city.icon && <img className='graphic' src={icon_url} alt='' />}
               {/* <div>&nbsp;</div> */}
-              <div className="title">{props.mainDescription}</div>
-              <div className="sub">{props.description}</div>
+              <div className="title">{props.city.mainDescription}</div>
+              <div className="sub">{props.city.description}</div>
             </div>
           </div>
 

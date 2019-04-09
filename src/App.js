@@ -13,8 +13,14 @@ class App extends Component {
     show: false
   }
 
+  showCards = (val) => {
+    this.setState({
+      show: val
+    })
+  }
+
   addCard = (val) => {
-    console.log("addCard() ",val);
+    // console.log("addCard() ",val);
 
     this.setState({cards:
       [...this.state.cards, val]});
@@ -22,7 +28,6 @@ class App extends Component {
       this.setState({
         show: true
       })
-
   }
 
   delCard = () => {
@@ -30,13 +35,13 @@ class App extends Component {
   }
 
   render() {
-    console.log("app state = ",this.state);
+    console.log("app state = ",this.state.show);
     return (
       <div className="App">
         <Navbar />
         <React.Fragment>
-          <AddCard addCard={this.addCard}/>
-          {this.state.cards && <ShowCards cards={this.state.cards}/>}
+          <AddCard addCard={this.addCard} showCards={this.showCards}/>
+          {this.state.show && <ShowCards cards={this.state}/>}
 
         </React.Fragment>
 

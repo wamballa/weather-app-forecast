@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Form from './Form';
 // import Form1 from './Form1';
 import WeatherCurrentCard from './WeatherCurrentCard'
-import CitySummary from './CitySummary'
+import SearchResults from './SearchResults'
 
 const API_KEY = 'e22d1c07fa47b19cb8d862add6c876d5';
 
@@ -64,7 +64,7 @@ export class WeatherSummary extends Component {
         {/* <Form1 findCity = {this.findCity} /> */}
         {/* <Form findCity cityList = {this.state.cityList} /> */}
 
-        <CitySummary cityList={this.state.cityList} city={this.state.city} />
+        <SearchResults cityList={this.state.cityList} city={this.state.city} />
         <div id='search_output'></div>
         <WeatherCurrentCard
           city={this.state.city}

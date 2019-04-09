@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class CitySummary extends Component {
+export class SearchResults extends Component {
 
   state = {
     city: undefined,
@@ -66,14 +66,11 @@ export class CitySummary extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     // console.log("Form submitted " + e.target.name);
+    // this.props.state.setState = false;
+
     const city = e.target.name;
     // this.props.addCity(city);
     this.getWeather(city);
-
-    // console.log("propssssss ",this.props.addCity);
-    // this.props.city = e.target.name;
-    // console.log("form submitted props ", this.props.cityList.list);
-    // this.props.city = e.target.name;
   }
   // <div key={city.id}> {city.name} {city.sys.country} Coords: {city.coord.lat}, {city.coord.lon}</div>
   render() {
@@ -85,21 +82,17 @@ export class CitySummary extends Component {
 
     return (
       <div>
-
-        <form onSubmit={this.handleFormSubmit}>
-
+        <form>
           {cityList.map((city) => (
             // how can i make these clickable?
             <div key={city.id}>
               <input type="button" className="link-button" name={city.name} value={city.name} onClick={this.handleFormSubmit}></input>
             </div>
-
           ))}
-
         </form>
       </div>
     )
   }
 }
 
-export default CitySummary
+export default SearchResults
