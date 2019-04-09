@@ -22,32 +22,45 @@ class App extends Component {
   addCard = (val) => {
     // console.log("addCard() ",val);
 
-    this.setState({cards:
-      [...this.state.cards, val]});
+    this.setState({
+      cards:
+        [...this.state.cards, val]
+    });
 
-      this.setState({
-        show: true
-      })
+    this.setState({
+      show: true
+    })
   }
 
-  delCard = () => {
+  delCard = (id) => {
     console.log("deleCard()");
-  }
 
-  render() {
-    console.log("app state = ",this.state.show);
-    return (
-      <div className="App">
-        <Navbar />
-        <React.Fragment>
-          <AddCard addCard={this.addCard} showCards={this.showCards}/>
-          {this.state.show && <ShowCards cards={this.state}/>}
+    // this.setState ({
+    //   todos: [...this.state.todos.filter(
+    //     todo => todo.id!==id
+    //   )]});
+    // Axios.delete("https://jsonplaceholder.typicode.com/todos/${id}")
+    //   .then(res => this.setState({
+    //     todos:
+    //       [...this.state.todos.filter(todo => todo.id !== id)]
+    //   }));
+  
+}
 
-        </React.Fragment>
+render() {
+  console.log("app state = ", this.state.show);
+  return (
+    <div className="App">
+      <Navbar />
+      <React.Fragment>
+        <AddCard addCard={this.addCard} showCards={this.showCards} />
+        {this.state.show && <ShowCards state={this.state} delCard={this.delCard} />}
 
-      </div>
-    );
-  }
+      </React.Fragment>
+
+    </div>
+  );
+}
 }
 
 export default App;

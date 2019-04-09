@@ -9,7 +9,7 @@ export class ShowCards extends Component {
 
     // console.log('showcards prop ',this.props.cards);
     // console.log('showcards prop.... ',this.props.cards[0]);
-    let cardList = this.props.cards.cards;
+    let cardList = this.props.state.cards;
     console.log('showcards prop ',cardList);
     // console.log('cardList '+cardList.length);
     // if (cardList.length == 0){
@@ -26,7 +26,7 @@ export class ShowCards extends Component {
     return (
       <div>
         {cardList.map((city) => (
-          <WeatherCard key={Math.random()} city={city}/>
+          <WeatherCard key={Math.random()} city={city} delCard={this.props.delCard}/>
         ))}
 
 
