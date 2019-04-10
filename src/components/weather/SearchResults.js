@@ -1,29 +1,13 @@
 import React, { Component } from 'react'
 
 export class SearchResults extends Component {
-
-  state = {
-    city: undefined,
-    country: undefined,
-    mainDescription: undefined,
-    description: undefined,
-    temp: undefined,
-    tempMax: undefined,
-    tempMin: undefined,
-    windDirection: undefined,
-    windSpeed: undefined,
-    icon: undefined,
-    error: 'Error: with choice of City or Country'
-  }
-
-
   getWeather = async (city) => {
     // console.log("SearchResults  " + city);
     const API_KEY = 'e22d1c07fa47b19cb8d862add6c876d5';
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&sort=population&appid=${API_KEY}&units=metric`);
     const data = await api_call.json();
     if (data.name && data.sys.country) {
-      this.setState({
+      this.props.addCity({
         city: data.name,
         id: data.id,
         country: data.sys.country,
@@ -38,28 +22,15 @@ export class SearchResults extends Component {
         error: ''
       });
     } else {
-      this.setState({
-        city: undefined,
-        id: undefined,
-        country: undefined,
-        mainDescription: undefined,
-        description: undefined,
-        temp: undefined,
-        tempMax: undefined,
-        tempMin: undefined,
-        windDirection: undefined,
-        windSpeed: undefined,
-        icon: undefined,
-        error: 'Error: with choice of City or Country'
-      });
+      console.error('Error: with choice of City or Country');
     }
     // console log all API call data
     // console.log("getWeather data raw ", data);
-    console.log("SearchResults state ",this.state);
+    // console.log("SearchResults state ",this.state);
     // cityList = [];
     // this.props.cities = [];
 
-    this.props.addCity(this.state);
+
     // console log state
     // console.log("getWeather data state ", this.state);
 

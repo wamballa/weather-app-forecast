@@ -25,31 +25,30 @@ export class AddCard extends Component {
 
   addCity = (val) => {
     this.props.addCard(val);
-    this.setState({
-      cities: []
-    })
-    this.props.showCards(true);
-  }
+    this.setState({ cities: [] })
+  };
+
+  handleFocus = () => this.props.showCards(false);
+
+  handleBlur = () => this.props.showCards(true);
 
   render() {
 
     return (
       <div>
         <div className="m-2">
-
           <form className="p-3 input-group mb-3" onSubmit={this.handleSubmit}>
             <div className="input-group-prepend"><span className="input-group-text">Location</span></div>
-            <input type="text" name='city' className="form-control" placeholder="City" />
-   
+            <input type="text" name='city' className="form-control" placeholder="City" onFocus={this.handleFocus} onBlur={this.handleBlur} />
+
             <div className="input-group-append">
               <button className="btn btn-success" type="submit">Go</button>
             </div>
           </form>
         </div>
-        {this.state.cities && <SearchResults 
-          state={this.props.state}
-          cities = {this.state.cities} 
-          addCity={this.addCity} />} 
+        {this.state.cities && <SearchResults
+          cities = {this.state.cities}
+          addCity={this.addCity} />}
       </div>
     )
   }

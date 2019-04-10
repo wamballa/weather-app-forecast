@@ -3,15 +3,15 @@ import './weather.css'
 
 export class Card extends Component {
 
-  handleClick = (e) => {
-    console.log("wwather button click id = " + e.target.id);
-    this.props.delCard(e.target.id);
+  handleClick = () => {
+    console.log(`City to delete: ${this.props.city.id}`);
+    this.props.delCard(this.props.city.id);
   }
 
   render() {
 
     console.log('weathercard = ', this.props);
-    this.props.delCard();
+    // this.props.delCard();
     console.log('weathercard icon= ', this.props.city.icon);
     const icon_url = 'http://openweathermap.org/img/w/' + this.props.city.icon + '.png';
 
@@ -44,7 +44,7 @@ export class Card extends Component {
                 <div className="title">{this.props.city.mainDescription}</div>
                 <div className="sub">{this.props.city.description}</div>
                 <div>{this.props.city.id}</div>
-                <input type="button" value="Delete" id={this.props.city.id} onClick={this.handleClick}></input>
+                <input type="button" value="Delete" onClick={this.handleClick}></input>
               </div>
             </div>
 
