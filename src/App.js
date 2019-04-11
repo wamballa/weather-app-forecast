@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Navbar from './components/layout/Navbar';
 //import WeatherSummary from './components/weather/WeatherSummary';
 import AddCard from './components/weather/AddCard';
+import AddCardAuto from './components/weather/AddCardAuto'
 import ShowCards from './components/weather/ShowCards';
-
+// https://www.w3schools.com/howto/howto_js_autocomplete.asp
 import './App.css';
 
 class App extends Component {
@@ -43,11 +44,13 @@ class App extends Component {
 
   render() {
     // console.log("app state = ", this.state);
+
     return (
       <div className="App">
         <Navbar />
         <React.Fragment>
-          <AddCard addCard={this.addCard} showCards={this.showCards} />
+
+          <AddCardAuto addCard={this.addCard} showCards={this.showCards} />
           {this.state.show && <ShowCards cards={this.state.cards} delCard={this.delCard} />}
 
         </React.Fragment>
