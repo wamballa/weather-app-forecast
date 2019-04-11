@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import WeatherCard from './WeatherCurrentCard'
 import Card from './Card'
 
 export class ShowCards extends Component {
@@ -23,7 +22,7 @@ export class ShowCards extends Component {
     // console.log('showcards icon ',cardList[0].icon);
     // const icon_url = 'http://openweathermap.org/img/w/' + this.props.cards.icon + '.png';
     // console.log('Showcard props '+icon_url);
-          {/* <WeatherCard key={Math.random()} city={city} delCard={this.props.delCard}/> */}
+
     return (
       <div>
         {cardList.map((city) => (

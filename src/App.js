@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './components/layout/Navbar';
-import WeatherSummary from './components/weather/WeatherSummary';
+//import WeatherSummary from './components/weather/WeatherSummary';
 import AddCard from './components/weather/AddCard';
 import ShowCards from './components/weather/ShowCards';
 
@@ -39,16 +39,6 @@ class App extends Component {
         )
       }
     });
-    // this.setState ({
-    //   todos: [...this.state.todos.filter(
-    //     todo => todo.id!==id
-    //   )]});
-    // Axios.delete("https://jsonplaceholder.typicode.com/todos/${id}")
-    //   .then(res => this.setState({
-    //     todos:
-    //       [...this.state.todos.filter(todo => todo.id !== id)]
-    //   }));
-
   }
 
   render() {

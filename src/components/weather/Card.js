@@ -25,8 +25,6 @@ export class Card extends Component {
           <div className="row weather bg-dark text-white shadow m-2 p-4 mb-4 ">
 
             <div className="col-sm-6 col-md-6 col-lg-6">
-              {/* <div className="weather blue-grey darken-1"> */}
-              {/* <div className="current"> */}
               <div className="info">
                 <div>&nbsp;</div>
                 <div className="city"><small><small>CITY: </small></small>{this.props.city.city}</div>
@@ -37,14 +35,14 @@ export class Card extends Component {
             </div>
 
             <div className="col-sm-6 col-md-6 col-lg-6" >
-              <div className="icon iconImage">
-                {/* <div>&nbsp;</div> */}
+              <div className="icon">
+                <div>&nbsp;</div>
                 {this.props.city.icon && <img className='graphic' src={icon_url} alt='' />}
                 {/* <div>&nbsp;</div> */}
                 <div className="title">{this.props.city.mainDescription}</div>
                 <div className="sub">{this.props.city.description}</div>
-                <div>{this.props.city.id}</div>
                 <input type="button" value="Delete" onClick={this.handleClick}></input>
+                <div>&nbsp;</div>
               </div>
             </div>
 
