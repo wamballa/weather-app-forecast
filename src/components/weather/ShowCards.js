@@ -10,7 +10,7 @@ export class ShowCards extends Component {
     // console.log('showcards prop ',this.props.cards);
     // console.log('showcards prop.... ',this.props.cards[0]);
     let cardList = this.props.cards;
-    console.log('showcards prop ',cardList);
+    // console.log('showcards prop ',cardList);
     // console.log('cardList '+cardList.length);
     // if (cardList.length == 0){
     //   console.log ("Card list empty",this.props.cards)

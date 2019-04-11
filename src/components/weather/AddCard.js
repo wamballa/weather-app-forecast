@@ -14,10 +14,12 @@ export class AddCard extends Component {
     const API_KEY = 'e22d1c07fa47b19cb8d862add6c876d5'; // openweather
     const city = e.target.elements.city.value;
     // const url = `http://dataservice.accuweather.com/locations/v1/cities/search?$apikey=${API_KEY}&q=${city}`;
-    const url = `http://api.openweathermap.org/data/2.5/find?q=${city}&type=like&sort=population&cnt=3&appid=${API_KEY}`;
+    // const url = `http://api.openweathermap.org/data/2.5/find?q=${city}&type=like&sort=population&cnt=3&appid=${API_KEY}`;
+    const url = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=626eR4h4xEHAihpvacPQzMiaEo822YxU&q=${city}&details=false`
     // console.log ("get city call = "+ call);
-    const api_call = await fetch(url);;
+    const api_call = await fetch(url);
     const data = await api_call.json();
+    console.log('accuweather response ', data);
     this.setState({
       cities: data
     });

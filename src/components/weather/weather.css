@@ -53,8 +53,8 @@
 }
 
 .iconImage {
-  width: 100%;
-  max-width: 100px;
+  width: 25%;
+  /* max-width: 100px; */
   height: auto;
 }
 
