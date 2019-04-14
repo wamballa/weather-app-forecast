@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from './components/layout/Navbar';
-//import WeatherSummary from './components/weather/WeatherSummary';
-// import AddCard from './components/weather/AddCard';
 import AddCardAuto from './components/weather/AddCardAuto'
 import ShowCards from './components/weather/ShowCards';
-// https://www.w3schools.com/howto/howto_js_autocomplete.asp
 import './App.css';
-
 
 class App extends Component {
   state = {
