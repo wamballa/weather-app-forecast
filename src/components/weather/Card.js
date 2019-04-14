@@ -28,7 +28,7 @@ export class Card extends Component {
             <div className="col-sm-6 col-md-6 col-lg-6">
               <div className="info">
                 <div>&nbsp;</div>
-                <div className="city"><small><small>CITY: </small></small>{this.props.city.city}, {this.props.city.countryId}</div>
+                <div className="city"><small><small>CITY: </small></small>{this.props.city.city}<div></div>{this.props.city.country}</div>
                 
                 <div className="temp">{Math.round(this.props.city.temp)}&deg;<small>C</small></div>
                 {/* <div className="wind"><small><small>WIND: </small></small>{Math.round(this.props.city.windSpeed)} mph</div> */}

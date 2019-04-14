@@ -1,19 +1,7 @@
 import React, { Component } from "react";
+// import {getWeather} from '../../helpers/helpers';
 
 export class SearchResults extends Component {
-  getUnique = (arr, comp) => {
-    const unique = arr
-      .map(e => e[comp])
-
-      // store the keys of the unique objects
-      .map((e, i, final) => final.indexOf(e) === i && i)
-
-      // eliminate the dead keys & store unique objects
-      .filter(e => arr[e])
-      .map(e => arr[e]);
-
-    return unique;
-  };
 
   getWeather = async (cityId, cityName, country, countryId) => {
     // console.log("SearchResults  " + city);
@@ -75,7 +63,9 @@ export class SearchResults extends Component {
     const countryId = e.target.dataset.countryId;
 
     // this.props.addCity(city);
+    // this.getWeather(cityId, cityName, country, countryId);
     this.getWeather(cityId, cityName, country, countryId);
+
   };
   // <div key={city.id}> {city.name} {city.sys.country} Coords: {city.coord.lat}, {city.coord.lon}</div>
   render() {
