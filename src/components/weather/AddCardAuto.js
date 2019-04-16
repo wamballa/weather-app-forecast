@@ -9,10 +9,18 @@ export default class AddCardAuto extends Component {
 
   getWeather = async (cityInfo) => {
 
-    const url = `http://dataservice.accuweather.com//currentconditions/v1/${cityInfo.cityId}?apikey=626eR4h4xEHAihpvacPQzMiaEo822YxU&detail=true`;
-    const api_call = await fetch(url);
-    const data = await api_call.json();
-    console.log("weather results data is ", data);
+    let url = `http://dataservice.accuweather.com//currentconditions/v1/${cityInfo.cityId}?apikey=626eR4h4xEHAihpvacPQzMiaEo822YxU&detail=true`;
+    let api_call = await fetch(url);
+    let data = await api_call.json();
+    // console.log("weather results raw data is ", data);
+
+    // 5 day forecast
+    //  url = `http://dataservice.accuweather.com//forecasts/v1/daily/5day/329149?apikey=626eR4h4xEHAihpvacPQzMiaEo822YxU&metric=true`;
+    //  api_call = await fetch(url);
+    //  data = await api_call.json();
+    // console.log("5 day weather results data is ", data);
+
+
 
     if (data[0].WeatherText) {
       this.addCity({
@@ -40,13 +48,13 @@ export default class AddCardAuto extends Component {
 
   handleFocus = () => {
     // this.props.showCards(false);
-    console.log('handle focus '+this.state.query);
+    console.log('handle focus ' + this.state.query);
     document.getElementById('autocomplete').value = '';
-    this.setState({ query: undefined});
+    this.setState({ query: undefined });
   }
   handleBlur = () => {
-    console.log('handle blur '+this.state.query);
-    this.setState({ query: undefined});
+    console.log('handle blur ' + this.state.query);
+    this.setState({ query: undefined });
   }
   handleScriptLoad = () => {
     // Declare Options For Autocomplete 
@@ -64,6 +72,23 @@ export default class AddCardAuto extends Component {
     // Extract City From Address Object
     const addressObject = this.autocomplete.getPlace();
     const address = addressObject.address_components;
+
+
+
+    const url = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=LUTON&key=AIzaSyBp4lsvgALACqdsxsEnW6A4y2e8CP3F9SU";
+    const ref_api_call = await fetch(url);
+    const dataRef = await ref_api_call.json();
+    console.log("photo search results ", dataRef);
+
+
+    // const picUrl = `"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${url}&key=AIzaSyBp4lsvgALACqdsxsEnW6A4y2e8CP3F9SU`;
+
+    // const pic_api_call = await fetch(picUrl);
+    // const dataPic = await pic_api_call.json();
+    // console.log ('picture data = ',dataPic);
+
+
+
     // Check if address is valid
     if (address) {
       const location = parseFloat(addressObject.geometry.location.lat()) + ',' + parseFloat(addressObject.geometry.location.lng());
