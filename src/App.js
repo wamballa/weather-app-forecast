@@ -17,7 +17,6 @@ class App extends Component {
   }
 
   addCard = (val) => {
-    // console.log("addCard() ",val);
 
     this.setState({
       cards:
@@ -31,7 +30,6 @@ class App extends Component {
 
     this.setState(state => {
       return {
-        // cards: this.state.cards.filter((_, i) => i !== id)
         cards: state.cards.filter(
           card => card.id !== id
         )
@@ -40,7 +38,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log("app state = ", this.state);
 
     return (
       <div className="App">

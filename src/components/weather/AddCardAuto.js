@@ -25,14 +25,10 @@ export default class AddCardAuto extends Component {
         city: cityInfo.cityName,
         id: cityInfo.cityId,
         country: cityInfo.countryName,
-        mainDescription: data[0].WeatherText,
         description: data[0].WeatherText,
         temp: data[0].Temperature.Metric.Value,
-        // tempMax: data.main.temp_max,
-        // tempMin: data.main.temp_min,
-        windDirection: 11,
-        windSpeed: 12,
         icon: data[0].WeatherIcon,
+        image: cityInfo.image,
         error: ""
       });
     } else {
@@ -45,8 +41,7 @@ export default class AddCardAuto extends Component {
   };
 
   handleFocus = () => {
-    // this.props.showCards(false);
-    console.log("handle focus " + this.state.query);
+    // console.log("handle focus " + this.state.query);
     document.getElementById("autocomplete").value = "";
     this.setState({ query: undefined });
   };
@@ -87,38 +82,23 @@ export default class AddCardAuto extends Component {
       this.setState({
         query: undefined
       });
-      console.log("google address = ", address);
-      console.log("accuweather response ", data);
+
+      // Get location image
+      var photos = addressObject.photos;
+      var picUrl = photos[0].getUrl();
+      console.log('photos '+picUrl);
+
       const cityInfo = {
         cityId: data.Key, //gets the accuweather city id to use with accuweather weather search
         cityName: address[0].long_name, //uses google city name for concistency
-        countryName: data.Country.EnglishName // uses accuweather country name as google returns variable array size in response
+        countryName: data.Country.EnglishName, // uses accuweather country name as google returns variable array size in response
+        image: picUrl
       };
 
       this.getWeather(cityInfo);
-
-        /// get image of city
-   
-        // AIzaSyDZ406mUvVUfUbGqautyTO5iw1vSj52RBM
-
-        const url2 = "https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyBp4lsvgALACqdsxsEnW6A4y2e8CP3F9SU";
-        const api_call2 = await fetch(url2, {mode: 'no-cors'})
-        .then(function(response){
-          response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-          console.log(response);
-        }).catch(function(error){
-          console.log('failed ',error);
-        });
-        // const data2 = await api_call2.json();
-        // console.log('data = ',data2);
     }
   };
-   callback = (results, status) => {
-     console.log('callback');
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      console.log("results ", results)
-    }
-  }
+
   render() {
     return (
       <div>

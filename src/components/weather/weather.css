@@ -12,6 +12,14 @@
   color: white;
 }
 
+.row-flex {
+  width: 100%;
+}
+
+.img {
+  /* width: 100%; */
+}
+
 .info {
   border-right: 3px solid white;
   height: 100%;
@@ -28,7 +36,13 @@
 .wind {
   font-size: 24px;
 }
-
+.imageContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: lightblue;
+  height: 200px;
+}
 .icon {
   height: 100%;
 }
@@ -54,6 +68,12 @@
 
 .iconImage {
   width: 25%;
+  /* max-width: 100px; */
+  height: auto;
+}
+
+.iconImageSmall {
+  width: 25px;
   /* max-width: 100px; */
   height: auto;
 }
