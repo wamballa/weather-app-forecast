@@ -7,11 +7,20 @@ export default class AddCardAuto extends Component {
   };
 
   getWeather = async cityInfo => {
-    let url = `http://dataservice.accuweather.com//currentconditions/v1/${
-      cityInfo.cityId
-    }?apikey=626eR4h4xEHAihpvacPQzMiaEo822YxU&detail=true`;
-    let api_call = await fetch(url);
-    let data = await api_call.json();
+    let data = [];
+    // let api_call;
+    let url = `http://dataservice.accuweather.com//currentconditions/v1/${cityInfo.cityId}?apikey=626eR4h4xEHAihpvacPQzMiaEo822YxU&detail=true`;
+
+      await fetch(url)
+      .then (async function(response)  {
+        data = await response.json();
+        console.log("repsonse OK ",data);
+      })
+      .catch(function(error) {
+        console.log('Error in Accuweather getting current conditions: ', error);
+      });
+
+    // let data = await api_call.json();
     // console.log("weather results raw data is ", data);
 
     // 5 day forecast
