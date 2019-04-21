@@ -7,7 +7,8 @@ import './App.css';
 class App extends Component {
   state = {
     cards: [],
-    show: false
+    show: false,
+    showInput: false,
   }
 
   showCards = (val) => {
@@ -21,7 +22,8 @@ class App extends Component {
     this.setState({
       cards:
         [...this.state.cards, val],
-      show: true
+      show: true,
+      showInput: false
     });
   }
 
@@ -37,15 +39,42 @@ class App extends Component {
     });
   }
 
+  handleClick = () => {
+    this.setState({
+      showInput: true
+    })
+  }
+
   render() {
 
     return (
       <div className="App">
-        <Navbar />
+        {/* <Navbar /> */}
         <React.Fragment>
 
-          <AddCardAuto addCard={this.addCard} showCards={this.showCards} />
-          {this.state.show && <ShowCards cards={this.state.cards} delCard={this.delCard} />}
+          <div className="card">
+            <div className="row card-header">
+              <div className="col-sm-6 col-md-6 col-lg-6">
+                Weather App
+            </div>
+              <div className=" col-sm-6 col-md-6 col-lg-6">
+                <div className="addButton">
+                  <input type="button" value="Add" onClick={this.handleClick}></input>
+                </div>
+              </div>
+            </div>
+            <div className="card-body">
+              {this.state.showInput && <AddCardAuto addCard={this.addCard} showCards={this.showCards} />}
+              {this.state.show && <ShowCards cards={this.state.cards} delCard={this.delCard} />}
+            </div>
+
+
+          </div>
+
+
+
+
+
 
         </React.Fragment>
 

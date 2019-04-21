@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Script from "react-load-script";
 
 
-export default class AddCardAuto extends Component {
+export default class AddCardAuto1 extends Component {
   state = {
     city: undefined
   };

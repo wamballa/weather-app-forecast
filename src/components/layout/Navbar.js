@@ -18,7 +18,7 @@ export class Navbar extends Component {
 
     return (
 
-      < nav className="navbar navbar-expand-md bg-dark navbar-dark" >
+      < nav className="navbar navbar-expand-md bg-dark navbar-dark rounded-top" >
 
         {/* Brand */}
         <a className="navbar-brand" href="_blank">WEATHER FORECAST</a>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Moment from 'react-moment';
 import './weather.css'
 
 export class Card extends Component {
@@ -13,9 +14,30 @@ export class Card extends Component {
     return firstWord;
   }
 
+
+  checkTime = (i) => {
+    console.log("CARD checkTime");
+    if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+    return i;
+  }
+
+  getTime = () => {
+    console.log("CARD startTime");
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = this.checkTime(m);
+    s = this.checkTime(s);
+    let time = h + ":" + m;
+    return time;
+  }
+
+
   render() {
 
-    // console.log('weathercard = ', this.props);
+    console.log('Card props = ', this.props);
+    console.log("time = "+this.props.city.time);
     // console.log('weathercard icon= ', this.props.city.icon);
     const icon_url = 'https://vortex.accuweather.com/adc2010/images/slate/icons/' + this.props.city.icon + '.svg';
     const id = this.firstWord(this.props.city.city);
@@ -27,11 +49,21 @@ export class Card extends Component {
 
         <div className="card-heading card-primary">
 
-          <div className="row">
-            <div className="col">{this.props.city.city}</div>
-            <div className="col"><img className='iconImageSmall' src={icon_url} alt='' /></div>
-            <div className="col">{Math.round(this.props.city.temp)}°C</div>
-          
+          <div className="row centered">
+
+
+            <div className="col title text-center">
+              <ul>
+                <li><Moment format="HH:mm">{this.props.city.time}</Moment></li>
+                <li>{this.props.city.city}</li>
+              </ul>
+
+
+
+            </div>
+            <div className="col center"><img className='iconImageSmall' src={icon_url} alt='' /></div>
+            <div className="col tempSummary">{Math.round(this.props.city.temp)}°C</div>
+
           </div>
 
         </div>
@@ -39,11 +71,11 @@ export class Card extends Component {
         <div id={id} className="collapse">
 
           <div className="card-block">
-            <div className="row weather bg-dark text-white shadow m-2 p-4 mb-4 ">
+            <div className="row weather bg-dark text-white shadow">
 
-              <div className="col-sm-6 col-md-6 col-lg-6">
+              <div className="col-sm-6 col-md-6 col-lg-6 column">
                 <div className="info">
-                  <img className="card-img-top" src={this.props.city.image} alt={this.props.city.city}/>
+                  <img className="picTure card-img-top post-content" src={this.props.city.image} alt={this.props.city.city} />
                   <div>&nbsp;</div>
                   <div className="city"><small><small>CITY: </small></small>{this.props.city.city}<div></div>{this.props.city.country}</div>
                   <div className="temp">{Math.round(this.props.city.temp)}&deg;<small>C</small></div>
@@ -51,12 +83,12 @@ export class Card extends Component {
                 </div>
               </div>
 
-              <div className="col-sm-6 col-md-6 col-lg-6 container" >
-                <div className="row">
-                  <div className="col align-self-start"><img className='iconImage' src={icon_url} alt='' /></div>
-                  <div className="title col align-self-center">{this.props.city.description}</div>
-                  <div className="col align-self-end"><input type="button" value="Delete" onClick={this.handleClick}></input></div>
-                </div>
+              <div className="col-sm-6 col-md-6 col-lg-6 column icon" >
+                {/* <div className="col"> */}
+                <div className=""><img className='iconImage' src={icon_url} alt='' /></div>
+                <div className="title text-center pagination-centered">{this.props.city.description}</div>
+                <div className=""><input type="button" value="Delete" onClick={this.handleClick}></input></div>
+                {/* </div> */}
               </div>
             </div>
           </div>

@@ -7,17 +7,30 @@
 
 .weather {
   box-shadow: 0px 1px 10px 0px;
-  /* overflow: hidden; */
-  /* padding: 20px; */
-  color: white;
+  overflow: hidden;
 }
-
+.row{
+  margin-right: 0px;
+  margin-left: 0px;
+}
 .row-flex {
   width: 100%;
 }
 
-.img {
-  /* width: 100%; */
+.picTure {
+  opacity: 0.5;
+}
+
+.post-content {
+  background: none repeat scroll 0 0 #FFFFFF;
+  top:0;
+  left:0;
+  position: absolute;
+}
+
+.column {
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .info {
@@ -27,10 +40,14 @@
 
 .city {
   font-size: 26px;
+  opacity: 1.0;
+  padding-right: 0px;
 }
 
 .temp {
   font-size: 56px;
+  opacity: 1.0;
+
 }
 
 .wind {
@@ -44,7 +61,15 @@
   height: 200px;
 }
 .icon {
-  height: 100%;
+  margin: 0 auto;
+	display: grid;
+	grid-template-columns: 100%;
+  grid-auto-rows: 33.33%;
+  align-items: center;
+}
+
+.icon .section{
+  flex: 1;
 }
 .icon .title {
   text-align: center;
@@ -100,4 +125,16 @@
 .link-button:hover,
 .link-button:focus {
 text-decoration: none;
+}
+
+.myContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: lightblue;
+  height: 200px;
+}
+
+.row-flex {
+  width: 100%;
 }
