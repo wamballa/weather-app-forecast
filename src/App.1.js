@@ -9,6 +9,8 @@ export default class App1 extends Component {
     cards: [],
     show: false,
     showInput: false,
+    mode: "edit",
+    buttonClass: "btn btn-primary align-items-center addButton fa fa-3 fa-info-circle"
   }
 
   showCards = (val) => {
@@ -39,10 +41,36 @@ export default class App1 extends Component {
     });
   }
 
-  handleClick = () => {
-    this.setState({
-      showInput: true
-    })
+  computeClass = () => {
+
+  }
+
+  handleClick = (e) => {
+    const base = "btn btn-primary align-items-center";
+    const fade = " addButton";
+    const edit = " fa fa-2 fa-info-circle"
+    const done = " fa fa-2 fa-thumbs-o-up"
+
+    if (e.target.id==="edit"){
+      // console.log('Target= ',e.target.id);
+      this.setState({
+        mode: "done",
+        buttonClass: base+done,
+        showInput: true
+      }); 
+    } else {
+      this.setState({
+        mode: "edit",
+        buttonClass: base+fade+edit,
+        showInput: false
+      }); 
+    }
+
+
+
+    // this.setState({
+    //   showInput: true
+    // })
   }
 
   render() {
@@ -60,7 +88,7 @@ export default class App1 extends Component {
                     <h3 className="py-0 my-0"><i className="fa fa-certificate"></i>  Weather</h3>
                   </div>
                   <div className="col-md-6 flex-grow-1 d-flex align-items-center justify-content-end w-75 bg-info">
-                    <a className="btn btn-primary align-items-center addButton" value="add" onClick={this.handleClick} href="#">Add</a>
+                    <a className={this.state.buttonClass} id={this.state.mode} value="add" onClick={this.handleClick} href="#"></a>
                   </div>
                 </div>
 

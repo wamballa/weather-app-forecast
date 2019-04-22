@@ -26,7 +26,9 @@ export default class Card1 extends Component {
       backgroundImage: `url('${this.props.city.image}')`,
       // filter: `brightness(50%)`
     };
-    console.log("image = "+this.props.city.image);
+    console.log("image = " + this.props.city.image);
+
+    const test = `<i className="fa fa-3x fa-times-circle visible" onClick=${this.handleClick}></i>`;
 
     return (
 
@@ -36,8 +38,8 @@ export default class Card1 extends Component {
           <div className="row">
             <div className="col-md-12">
               <div className="row border-bottom  py-1">
-              <div className="" ></div>
-                <div className="col-md-4 text-center justify-content-center d-flex flex-column">
+                <div className="col-md-1 d-flex justify-content-center align-items-center">{test}</div>
+                <div className="col-md-3 text-center justify-content-center d-flex flex-column">
                   <div className="row w-100">
                     <div className="col-md-12">
                       <h5 className="my-0"><Moment format="HH:mm">{this.props.city.time}</Moment></h5>
