@@ -5,13 +5,21 @@ import ShowCards from './components/weather/ShowCards.1';
 
 
 export default class App1 extends Component {
+
+  constructor() {
+    super();
+    this.editMode = false;
+  }
   state = {
     cards: [],
     show: false,
     showInput: false,
     mode: "edit",
+    editMode: false,
     buttonClass: "btn btn-primary align-items-center addButton fa fa-3 fa-info-circle"
   }
+
+
 
   showCards = (val) => {
     this.setState({
@@ -46,31 +54,44 @@ export default class App1 extends Component {
   }
 
   handleClick = (e) => {
+    this.toggleEditMode();
+    console.log("2 edit mode = " + this.state.editMode);
+  }
+
+  toggleEditMode = () => {
     const base = "btn btn-primary align-items-center";
     const fade = " addButton";
     const edit = " fa fa-2 fa-info-circle"
     const done = " fa fa-2 fa-thumbs-o-up"
 
-    if (e.target.id==="edit"){
-      // console.log('Target= ',e.target.id);
+    this.editMode = !this.editMode;
+    console.log("1 edit mode = " + this.state.editMode);
+    // this.setState({
+    //   editMode: true
+    // });
+    // this.setState(prevState => ({
+    //   editMode: !prevState.check
+    // }));
+
+    // console.log("2 edit mode = " + this.state.editMode);
+
+    if (this.editMode) {
+      console.log('Editmode true');
       this.setState({
-        mode: "done",
-        buttonClass: base+done,
-        showInput: true
-      }); 
+        // mode: "done",
+        editMode: true,
+        buttonClass: base + done,
+        // showInput: true
+      });
     } else {
+      console.log('Editmode false');
       this.setState({
-        mode: "edit",
-        buttonClass: base+fade+edit,
-        showInput: false
-      }); 
+        editMode: false,
+        buttonClass: base + fade + edit,
+        // showInput: false
+      });
     }
 
-
-
-    // this.setState({
-    //   showInput: true
-    // })
   }
 
   render() {
@@ -94,8 +115,8 @@ export default class App1 extends Component {
 
                 <div className="row">
                   <div className="card-body">
-                    {this.state.showInput && <AddCardAuto addCard={this.addCard} showCards={this.showCards} />}
-                    {this.state.show && <ShowCards cards={this.state.cards} delCard={this.delCard} />}
+                    {this.state.show && <ShowCards cards={this.state.cards} editMode={this.editMode} delCard={this.delCard} />}
+                    {this.state.editMode && <AddCardAuto toggleEdit={this.toggleEditMode} addCard={this.addCard} showCards={this.showCards} />}
                   </div>
 
                 </div>

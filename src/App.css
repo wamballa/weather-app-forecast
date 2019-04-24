@@ -23,15 +23,25 @@
   background-position: top left;	
   background-size: 100%;	
   background-repeat: repeat; 
-  opacity: 0.7;
+  /* opacity: 1; */
+  /* filter: brightness(50%); */
 }
 
-
-.caption {
-  background: none repeat scroll 0 0 #FFFFFF;
-  position: absolute;
+.imageText{
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.2));	
+  background-position: top left;	
+  background-size: 100%;	
+  background-repeat: repeat;
 }
 
-.maxBright {
-  filter: brightness(100%);
+.showButton {
+  visibility: visible;
+}
+
+.hideButton {
+  visibility: hidden;
+}
+
+.red {
+  color: red;
 }

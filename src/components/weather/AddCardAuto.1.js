@@ -80,7 +80,7 @@ export default class AddCardAuto1 extends Component {
     // Extract City From Address Object
     const addressObject = this.autocomplete.getPlace();
     const address = addressObject.address_components;
-    console.log("Address = ",address);
+    console.log("Address = ", address);
 
     // Check if address is valid
     if (address) {
@@ -110,27 +110,37 @@ export default class AddCardAuto1 extends Component {
       };
 
       this.getWeather(cityInfo);
+
+      this.props.toggleEdit();
     }
   };
 
   render() {
     return (
-      <div>
-        <div className="m-2 rounded-bottom border border-dark">
-          <Script
-            url="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp4lsvgALACqdsxsEnW6A4y2e8CP3F9SU&libraries=places"
-            onLoad={this.handleScriptLoad}
-          />
-          <input
-            id="autocomplete"
-            placeholder=""
-            value={this.state.query}
-            onFocus={this.handleFocus}
-            style={{
-              margin: "0 auto",
-              maxWidth: 800
-            }}
-          />
+      <div className="row">
+        <div className="col-md-12">
+          <form className="form-inline d-flex my-0 py-2 justify-content-center">
+            <div className="input-group">
+              <Script
+                url="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp4lsvgALACqdsxsEnW6A4y2e8CP3F9SU&libraries=places"
+                onLoad={this.handleScriptLoad}
+              />
+
+              <input
+                type="search"
+                className="form-control"
+                id="autocomplete"
+                placeholder="Search city"
+                value={this.state.query}
+                onFocus={this.handleFocus}
+                style={{
+                  margin: "0 auto",
+                  maxWidth: 800
+                }}
+              />
+              <div className="input-group-append"><button className="btn btn-primary" type="button"><i className="fa fa-search"></i></button></div>
+            </div>
+          </form>
         </div>
       </div>
     );

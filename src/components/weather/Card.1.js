@@ -14,6 +14,19 @@ export default class Card1 extends Component {
     return firstWord;
   }
 
+  getClass = (mode)=> {
+    const baseClass = "fa fa-3x fa-times-circle red";
+    const visible = " visible";
+    let className = "";
+    if (mode){
+      className = baseClass + " showButton";
+    } else {
+      className = baseClass + " hideButton";
+    }
+    return className;
+    // "<i className="fa fa-3x fa-times-circle visible" onClick=${this.handleClick}></i>`
+  }
+
   render() {
 
     console.log('Card props = ', this.props);
@@ -26,9 +39,9 @@ export default class Card1 extends Component {
       backgroundImage: `url('${this.props.city.image}')`,
       // filter: `brightness(50%)`
     };
-    console.log("image = " + this.props.city.image);
+    console.log("image = " + imageBGstyle);
 
-    const test = `<i className="fa fa-3x fa-times-circle visible" onClick=${this.handleClick}></i>`;
+    const cardDeleteClass = this.getClass(this.props.editMode);
 
     return (
 
@@ -38,7 +51,7 @@ export default class Card1 extends Component {
           <div className="row">
             <div className="col-md-12">
               <div className="row border-bottom  py-1">
-                <div className="col-md-1 d-flex justify-content-center align-items-center">{test}</div>
+                <div className="col-md-1 d-flex justify-content-center align-items-center"><i className={cardDeleteClass} onClick={this.handleClick}></i></div>
                 <div className="col-md-3 text-center justify-content-center d-flex flex-column">
                   <div className="row w-100">
                     <div className="col-md-12">
@@ -65,17 +78,17 @@ export default class Card1 extends Component {
 
 
           <div className="container">
-            <div className="row">
+            <div className="row border-bottom">
               <div className="col-md-6 d-flex flex-column justify-content-center align-items-center text-center px-0 imageColumn" style={imageBGstyle}>
-                <div className="row w-100">
+                <div className="row w-100 maxBright">
                   <div className="col-md-12">
-                    <h1 className="text-white maxBright">City: {this.props.city.city}</h1>
+                    <h1 className="text-white my-0 imageText">City: {this.props.city.city}</h1>
                   </div>
                 </div>
                 <div className="row w-100">
                   <div className="col-md-12">
-                    <h3 className="text-white">{this.props.city.country}</h3>
-                    <h3 className="display-3 text-white">{Math.round(this.props.city.temp)}&deg;C</h3>
+                    <h3 className="text-white my-0 imageText">{this.props.city.country}</h3>
+                    <h3 className="display-3 text-white my-0 imageText">{Math.round(this.props.city.temp)}&deg;C</h3>
                   </div>
                 </div>
               </div>
@@ -87,9 +100,6 @@ export default class Card1 extends Component {
                   <div className="col-md-12 text-center mx-0 px-0">
                     <h1 className="display-4 w-100 py-0 px-0 my-0 mx-0">{this.props.city.description}</h1>
                   </div>
-                </div>
-                <div className="row w-100 px-0 mx-0">
-                  <div className="col-md-12 text-center mt-4"><a className="btn btn-primary" value="Delete" onClick={this.handleClick} href="#">Delete</a></div>
                 </div>
               </div>
             </div>
