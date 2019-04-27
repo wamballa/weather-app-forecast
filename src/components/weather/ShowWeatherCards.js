@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import WeatherCard from './WeatherCard'
 
-export default class ShowCards1 extends Component {
+export default class ShowWeatherCards extends Component {
 
   render() {
 
