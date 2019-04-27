@@ -1,30 +1,22 @@
-export default getWeather = async (cityId, cityName, country, countryId) => {
-  // console.log("SearchResults  " + city);
-  // const API_KEY = 'e22d1c07fa47b19cb8d862add6c876d5';
-  // const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&sort=population&appid=${API_KEY}&units=metric`);
-  // const url = `http://dataservice.accuweather.com/locations/v1/${city}?apikey=626eR4h4xEHAihpvacPQzMiaEo822YxU`
-  const url = `http://dataservice.accuweather.com//currentconditions/v1/${cityId}?apikey=626eR4h4xEHAihpvacPQzMiaEo822YxU&detail=true`;
-  const api_call = await fetch(url);
-  const data = await api_call.json();
-  console.log("weather results data is ", data);
+export function getCurrentPosition(options = {}) {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject, options);
+  });
+}
 
-  if (data[0].WeatherText) {
-    this.props.addCity({
-      city: cityName,
-      id: cityId,
-      country: country,
-      countryId: countryId,
-      mainDescription: data[0].WeatherText,
-      description: data[0].WeatherText,
-      temp: data[0].Temperature.Metric.Value,
-      // tempMax: data.main.temp_max,
-      // tempMin: data.main.temp_min,
-      windDirection: 11,
-      windSpeed: 12,
-      icon: data[0].WeatherIcon,
-      error: ""
-    });
-  } else {
-    console.error("Error: with choice of City or Country");
+export async function getAccuweatherDataFromLocation(lat, long) {
+  const location = lat + "," + long;
+  const url = `http://dataservice.accuweather.com//locations/v1/cities/geoposition/search?apikey=626eR4h4xEHAihpvacPQzMiaEo822YxU&q=${location}`;
+  const apiCall = await fetch(url);
+  const data = await apiCall.json();
+  return (data);
+}
+
+export function getPlaceID(data) {
+  for (var i = 0; i < data.length; i++) {
+    var component = data[i];
+    if (component.types[0] === "administrative_area_level_2") {
+      return component.place_id;
+    }
   }
-};
+}
