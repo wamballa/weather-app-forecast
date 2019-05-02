@@ -3,7 +3,7 @@ import AddWeatherCardManually from './components/weather/AddWeatherCardManually'
 import AddWeatherCardAutomatically from './components/weather/AddWeatherCardAutomatically';
 import ShowWeatherCards from './components/weather/ShowWeatherCards';
 
-export default class App1 extends Component {
+export default class App extends Component {
   constructor() {
     super();
     this.editMode = false;
